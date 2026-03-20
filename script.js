@@ -113,7 +113,7 @@ function aplicarLingua() {
   document.getElementById('th-saldo').textContent = l.thSaldo;
   document.getElementById('th-investido').textContent = l.thInvestido;
   document.getElementById('th-juros').textContent = l.thJuros;
-  document.getElementById('btn-lingua').textContent = lingua === 'pt' ? 'EN' : 'PT';
+  document.getElementById('btn-lingua').textContent = lingua === 'pt' ? 'PT • R$' : 'EN • $';
   document.getElementById('prefix-principal').textContent = l.prefixo;
   document.getElementById('prefix-aporte').textContent = l.prefixo;
 
@@ -136,7 +136,8 @@ function toggleTheme() {
   const html = document.documentElement;
   const isDark = html.getAttribute('data-theme') === 'dark';
   html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+  document.getElementById('icon-moon').style.display = isDark ? 'block' : 'none';
+  document.getElementById('icon-sun').style.display  = isDark ? 'none'  : 'block';
   if (graficoInstance) renderGrafico(graficoInstance._data);
 }
 

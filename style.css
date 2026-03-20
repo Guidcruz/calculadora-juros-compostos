@@ -121,16 +121,17 @@ h1 {
   width: 42px;
   height: 42px;
   cursor: pointer;
-  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
+  color: var(--text-muted);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
   flex-shrink: 0;
 }
 
 .theme-toggle:hover {
   border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* CARD */
