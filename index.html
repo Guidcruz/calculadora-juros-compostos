@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Calculadora de Juros Compostos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-title">
+        <div class="icon">%</div>
+        <div>
+          <h1 id="titulo">Juros Compostos</h1>
+          <p class="subtitle" id="subtitulo">Simule o crescimento do seu investimento</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="lang-toggle" onclick="toggleLingua()" id="btn-lingua" title="Switch language">PT</button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="principal" id="label-principal">Capital inicial</label>
+          <div class="input-wrapper">
+            <span class="input-prefix" id="prefix-principal">R$</span>
+            <input type="text" id="principal" placeholder="0,00" inputmode="decimal"
+              onfocus="onFocusValor(this)" onblur="onBlurValor(this)" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="aporte" id="label-aporte">Aporte mensal</label>
+          <div class="input-wrapper">
+            <span class="input-prefix" id="prefix-aporte">R$</span>
+            <input type="text" id="aporte" placeholder="0,00" inputmode="decimal"
+              onfocus="onFocusValor(this)" onblur="onBlurValor(this)" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="taxa" id="label-taxa">Taxa de juros (%)</label>
+          <div class="periodo-row">
+            <input type="number" id="taxa" placeholder="0,00" min="0" step="0.01" />
+            <select id="tipo-taxa">
+              <option value="mensal" id="opt-mensal-taxa">Mensal</option>
+              <option value="anual" id="opt-anual-taxa">Anual</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="periodo" id="label-periodo">Período</label>
+          <div class="periodo-row">
+            <input type="number" id="periodo" placeholder="12" min="1" step="1" />
+            <select id="unidade">
+              <option value="mensal" id="opt-meses">Meses</option>
+              <option value="anual" id="opt-anos">Anos</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-calcular" onclick="calcular()" id="btn-calcular">Calcular</button>
+    </div>
+
+    <div class="resultado" id="resultado" style="display:none">
+      <div class="resultado-grid">
+        <div class="resultado-item">
+          <span class="label" id="label-montante">Montante final</span>
+          <span class="valor" id="montante"></span>
+        </div>
+        <div class="resultado-item">
+          <span class="label" id="label-investido">Total investido</span>
+          <span class="valor" id="investido"></span>
+        </div>
+        <div class="resultado-item destaque">
+          <span class="label" id="label-juros">Juros ganhos</span>
+          <span class="valor" id="juros"></span>
+        </div>
+      </div>
+
+      <div class="chart-wrapper">
+        <canvas id="grafico"></canvas>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th id="th-periodo">Período</th>
+              <th id="th-saldo">Saldo</th>
+              <th id="th-investido">Total investido</th>
+              <th id="th-juros">Juros acumulados</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
